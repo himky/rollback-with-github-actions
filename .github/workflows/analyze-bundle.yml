@@ -15,7 +15,7 @@
 #     git add .
 #     git diff-index --quiet HEAD || git commit -m "Add changes" && git push
 
-name: Update analyzed-bundle to Github Wiki
+name: Analyze-bundle
 
 on:
   workflow_dispatch:
