@@ -23,7 +23,7 @@ on:
     branches: [master]
 
 jobs:
-  deploy:
+  analyze:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout wiki
@@ -33,7 +33,7 @@ jobs:
 
       - name: Analyze bundle`
         run: |
-          echo 'analyzed-bundle-0416' >> test-wiki.md
+          echo 'analyzed-bundle-0416' > test-wiki.md
 
       - name: Push to wiki
         run: |
