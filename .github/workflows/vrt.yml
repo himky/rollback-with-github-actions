@@ -30,9 +30,14 @@ jobs:
         with:
           node-version: 10.16.3
       - run: npm install
+      - run: set -euo pipefail
       - run: npx backstop reference --config=backstop.config.js
+      - run: echo "return value=$?"
       - run: ls -la backstop_data/bitmaps_reference
       - run: npx backstop test --config=backstop.config.js
+      - run: echo "return value=$?"
+      - run: date_time=$(ls backstop_data/bitmaps_test | sort -V | tail -n 1)
+      - run: cat backstop_data/bitmaps_test/$date_time/report.json
       - run: ls -la backstop_data/bitmaps_test
       - run: ls -la backstop_data/html_report
       - run: kill $(cat .pid)
