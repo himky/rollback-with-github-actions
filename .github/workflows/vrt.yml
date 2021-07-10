@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10.16.3
-      - run: npm run install
+      - run: npm install
       - run: webpack-dev-server
 
   vrt:
@@ -29,5 +29,5 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10.16.3
-      - run: npm run install
+      - run: npm install
       - run: npx backstop reference && npx backstop test
