@@ -28,7 +28,5 @@ jobs:
         with:
           node-version: 10.16.3
       - run: npm install
-      - run: npx backstop reference --config=backstop.config.js
-      - run: ls -la backstop_data/bitmaps_reference
-      - run: npx backstop test --config=backstop.config.js
-
+      - run: npx cross-env REFERENCE=true TOKEN=829c19e5-bbe6-4679-9a10-83fae4c13c06 INDEX=7 backstop reference --config=backstop.config.js
+      - run: npx cross-env REFERENCE=false TOKEN=829c19e5-bbe6-4679-9a10-83fae4c13c06 INDEX=7 backstop test --config=backstop.config.js
