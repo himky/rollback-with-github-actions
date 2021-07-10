@@ -15,10 +15,10 @@ module.exports = {
   scenarios: [
     {
       label: 'BackstopJS Homepage',
-      url: 'https://stg-admin.bedore.jp/webagent/example?line_bot_uuid=f8a9de82-1320-4a4c-bc6a-5493461ab9e1&index=0&show_private_templates=false&skip_logging=true&slots=[]',
-      // url: 'https://stg-webagent.bedore.jp/preview.html?config_origin=https://webagent.bedore.jp&line_bot_uuid=829c19e5-bbe6-4679-9a10-83fae4c13c06&index=7&show_private_templates=false&skip_logging=true&slots=[]&scene=2',
-      delay: 8000,
-      selectors: ['#bedore-webagent-inner']
+      url: 'http://0.0.0.0:8080',
+      // url: 'https://stg-webagent.bedore.jp/preview.html?config_origin=https://stg-webagent.bedore.jp&line_bot_uuid=f8a9de82-1320-4a4c-bc6a-5493461ab9e1&index=0&show_private_templates=false&skip_logging=true&slots=[]',
+      delay: 500,
+      // selectors: ['#bedore-webagent-inner']
     }
   ],
   paths: {
