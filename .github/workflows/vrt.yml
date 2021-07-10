@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 10.16.3
       - run: npm install
-      - run: npx webpack serve & echo $! > .pid
+      # - run: npx webpack serve & echo $! > .pid
 
   vrt:
     name: backstopjs
@@ -31,8 +31,6 @@ jobs:
       - run: npm install
       - run: npx backstop reference --config=backstop.config.js
       - run: ls -la backstop_data/bitmaps_reference
-      - run: npx backstop test --config=backstop.config.js || true
-      - run: ls -la backstop_data/bitmaps_test
-      - run: ls -la backstop_data/html_report
-      - run: kill $(cat .pid)
+      - run: npx backstop test --config=backstop.config.js
+      # - run: kill $(cat .pid)
 
