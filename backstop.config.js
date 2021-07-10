@@ -15,7 +15,7 @@ module.exports = {
   scenarios: [
     {
       label: 'BackstopJS Homepage',
-      url: 'http://0.0.0.0:8080',
+      url: 'http://localhost:8080',
       // url: 'https://stg-webagent.bedore.jp/preview.html?config_origin=https://stg-webagent.bedore.jp&line_bot_uuid=f8a9de82-1320-4a4c-bc6a-5493461ab9e1&index=0&show_private_templates=false&skip_logging=true&slots=[]',
       delay: 500,
       // selectors: ['#bedore-webagent-inner']
