@@ -3,7 +3,8 @@ const token = process.env.TOKEN || '829c19e5-bbe6-4679-9a10-83fae4c13c06'
 const index = process.env.INDEX || 0
 const url = process.env.REFERENCE === 'true'
   ? `https://admin.bedore.jp/webagent/example?line_bot_uuid=${token}&index=${index}&show_private_templates=false&skip_logging=true&slots=[]`
-  : `https://stg-webagent.bedore.jp/preview.html?config_origin=https://webagent.bedore.jp&line_bot_uuid=${token}&index=${index}&show_private_templates=false&skip_logging=true&slots=[]`
+  : `http://localhost:9000/preview.html?config_origin=https://webagent.bedore.jp&line_bot_uuid=${token}&index=${index}&show_private_templates=false&skip_logging=true&slots=[]`
+  // : `https://stg-webagent.bedore.jp/preview.html?config_origin=https://webagent.bedore.jp&line_bot_uuid=${token}&index=${index}&show_private_templates=false&skip_logging=true&slots=[]`
 
 module.exports = {
   id: 'backstop_default',
@@ -19,6 +20,7 @@ module.exports = {
       height: 768
     }
   ],
+  onReadyScript: 'puppet/onReady.js',
   scenarios: [
     {
       label: 'BackstopJS Homepage',

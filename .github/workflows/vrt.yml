@@ -18,5 +18,6 @@ jobs:
         with:
           node-version: 10.16.3
       - run: npm install
-      - run: npx cross-env REFERENCE=true TOKEN=829c19e5-bbe6-4679-9a10-83fae4c13c06 INDEX=7 backstop reference --config=backstop.config.js
-      - run: npx cross-env REFERENCE=false TOKEN=829c19e5-bbe6-4679-9a10-83fae4c13c06 INDEX=7 backstop test --config=backstop.config.js
+      - run: npx cross-env REFERENCE=true TOKEN=829c19e5-bbe6-4679-9a10-83fae4c13c06 INDEX=3 backstop reference --config=backstop.config.js
+      - run: npx webpack serve -p 9000
+      - run: npx cross-env TOKEN=829c19e5-bbe6-4679-9a10-83fae4c13c06 INDEX=3 backstop test --config=backstop.config.js
