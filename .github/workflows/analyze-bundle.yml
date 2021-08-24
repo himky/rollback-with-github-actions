@@ -16,7 +16,7 @@ jobs:
 
       - name: Analyze bundle
         run: |
-          echo 'analyzed-bundle-0824' > test-wiki.md
+          echo 'analyzed-bundle-0824-1' > test-wiki.md
 
       - name: Push to wiki
         run: |
