@@ -18,14 +18,12 @@ jobs:
       with:
         name: head-stats
         path: ./dist/stats.json
-    - name: Read bundle size list
-      id: read-bundle-size-list
-      run: cat ./dist/bundle-size-list.textile
     - name: Create comment
       uses: actions/github-script@v4
       with:
         script: |
-          const result = steps.read-bundle-size-list.outputs.result
+          const fs = require('fs')
+          const result = fs.readFileSync('./dist/bundle-size-list.textile')
           github.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
