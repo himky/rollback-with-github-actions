@@ -17,3 +17,5 @@ module.exports = {
     new WebpackBundleSizeAnalyzerPlugin('./bundle-size-list.textile')
   ]
 }
+
+
