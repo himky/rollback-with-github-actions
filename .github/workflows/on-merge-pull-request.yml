@@ -15,11 +15,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ${{github.repository}}.wiki
-
-      - name: Package size list
+          
+      - name: Bundle
         run: |
-          # webpack-bundle-size-analyzer
-          echo 'analyzed-bundle-0824-3' > test-wiki.md
+          npm run build
 
       - name: Push to wiki
         run: |
@@ -27,3 +26,9 @@ jobs:
           git config --global user.email "github-actions@example.com"
           git add .
           git diff-index --quiet HEAD || git commit -m "Update analyzed bundle" && git push
+
+      - name: Upload stats.json
+        uses: actions/upload-artifact@v1
+        with:
+          name: stats.json
+          path: ./dist/base-stats.json
