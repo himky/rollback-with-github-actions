@@ -20,18 +20,17 @@ jobs:
         path: ./dist/stats.json
     - name: Read bundle size list
       id: read-bundle-size-list
-      uses: juliangruber/read-file-action@v1
-      with:
-        path: ./dist/bundle-size-list.textile
+      run: cat ./dist/bundle-size-list.textile
     - name: Create comment
       uses: actions/github-script@v4
       with:
         script: |
+          const result = steps.read-bundle-size-list.outputs.result
           github.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: `<details><summary>Bundleサイズ一覧</summary>${steps.read-bundle-size-list.outputs.content}</details>`
+            body: `<details><summary>Bundleサイズ一覧</summary>${result}</details>`
           })
 
   build-base:
