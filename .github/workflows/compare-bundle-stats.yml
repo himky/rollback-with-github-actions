@@ -20,7 +20,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: base-stats
-        path: ./dist/stats.json
+        path: ./base-stats/stats.json
 
     - name: Diff between base & head
       uses: chronotruck/webpack-stats-diff-action@1.0.0
