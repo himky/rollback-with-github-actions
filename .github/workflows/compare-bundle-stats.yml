@@ -18,16 +18,21 @@ jobs:
       with:
         name: head-stats
         path: ./dist/stats.json
+    - name: Read bundle size list
+      uses: actions/github-script@v4
+      id: read-bundle-size-list
+      with:
+        script: return require('./dist/bundle-size-list.textile')
+        result-encoding: string
     - name: Create comment
       uses: actions/github-script@v4
       with:
         script: |
-          const bundleSizeList = require('./dist/bundle-size-list.textile')
           github.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: `<details><summary>Bundleサイズ一覧</summary>${bundleSizeList}</details>`
+            body: `<details><summary>Bundleサイズ一覧</summary>${steps.read-bundle-size-list.outputs.result}</details>`
           })
 
   build-base:
