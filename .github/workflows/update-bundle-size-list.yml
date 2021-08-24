@@ -23,9 +23,6 @@ jobs:
     - name: Build assets
       run: npm run build
 
-  wiki:
-    runs-on: ubuntu-latest
-    steps:
     - name: Checkout wiki
       uses: actions/checkout@v2
       with:
