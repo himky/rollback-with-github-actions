@@ -23,12 +23,13 @@ jobs:
       with:
         script: |
           const fs = require('fs')
-          const result = fs.readFileSync('./dist/bundle-size-list.textile')
+          const text = fs.readFileSync('./dist/bundle-size-list.textile')
+          const replaced = text.replace('\n', '<br>')
           github.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: `<details><summary>Bundleサイズ一覧</summary>${result}</details>`
+            body: `<details><summary>Bundleサイズ一覧</summary>${replaced}</details>`
           })
 
   build-base:
