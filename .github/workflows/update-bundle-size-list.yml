@@ -23,7 +23,7 @@ jobs:
       run: npm run build
 
     - name: Upload stats
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
         name: base-stats
         path: ./dist/stats.json

@@ -17,9 +17,10 @@ jobs:
       run: npm run build
 
     - name: Download base artifact
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v2
       with:
         name: base-stats
+        path: ./dist/stats.json
 
     - name: Diff between base & head
       uses: chronotruck/webpack-stats-diff-action@1.0.0
