@@ -32,6 +32,14 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: ${{github.repository}}.wiki
+<<<<<<< Updated upstream
+=======
+        ref: master
+        path: .wiki
+
+    - name: Move bundle-size-list.textile
+      run: mv ./dist/bundle-size-list.textile .wiki/bundle-size-list.textile
+>>>>>>> Stashed changes
 
     - name: Push to wiki
       run: |
