@@ -1,0 +1,27 @@
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build assets
+      run: npm run build
+
+    - name: Download base artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: base-stats
+
+    - name: Diff between base & head
+      uses: chronotruck/webpack-stats-diff-action@1.0.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        base_stats_path: ./base-stats/stats.json
+        head_stats_path: ./dist/stats.json
