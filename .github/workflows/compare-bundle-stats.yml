@@ -24,8 +24,7 @@ jobs:
         script: |
           const fs = require('fs')
           const text = fs.readFileSync('./dist/bundle-size-list.textile', 'utf8')
-          console.log(text)
-          const replaced = text.replace('\n', '<br>')
+          const replaced = text.replace(/\n/g, '<br>')
           github.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
