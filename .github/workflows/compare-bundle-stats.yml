@@ -1,3 +1,5 @@
+name: Compare bundle stats
+
 on:
   workflow_dispatch:
   pull_request:

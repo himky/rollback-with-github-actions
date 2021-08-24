@@ -1,4 +1,4 @@
-name: Update package size list
+name: Update bundle size list
 
 on:
   workflow_dispatch:
