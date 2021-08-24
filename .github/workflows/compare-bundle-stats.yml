@@ -19,18 +19,17 @@ jobs:
         name: head-stats
         path: ./dist/stats.json
     - name: Create comment
+      env:
+        bundleSizeList: cat ./dist/bundle-size-list.textile
       uses: actions/github-script@0.8.0
       with:
         script: |
-          const body = fs.readFile('./dist/bundle-size-list.textile', (err, data) => {
-            if (err) throw err
-            const body = `<details><summary>Bundleサイズ一覧</summary>${data}</details>`
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body
-            })
+          const body = `<details><summary>Bundleサイズ一覧</summary>${env.bundleSizeList}</details>`
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body
           })
 
   build-base:
