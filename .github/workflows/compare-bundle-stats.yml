@@ -18,6 +18,19 @@ jobs:
       with:
         name: head-stats
         path: ./dist/stats.json
+    - name: Create comment
+      uses: actions/github-script@v4
+      with:
+        script: |
+          const fs = require('fs')
+          const text = fs.readFileSync('./dist/bundle-size-list.textile', 'utf8')
+          const replaced = text.replace(/\n/g, '<br>')
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `<details><summary>Bundleサイズ一覧</summary>${replaced}</details>`
+          })
 
   build-base:
     name: 'Build base'
