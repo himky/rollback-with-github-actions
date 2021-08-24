@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: ${{github.repository}}.wiki
-          
+
     - name: Install dependencies
       run: npm ci
 
@@ -29,7 +29,7 @@ jobs:
         git add .
         git diff-index --quiet HEAD || git commit -m "Update analyzed bundle" && git push
 
-    - name: Upload stats.json
+    - name: Upload stats
       uses: actions/upload-artifact@v1
       with:
         name: base-stats
