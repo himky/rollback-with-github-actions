@@ -19,17 +19,15 @@ jobs:
         name: head-stats
         path: ./dist/stats.json
     - name: Create comment
-      env:
-        bundleSizeList: cat ./dist/bundle-size-list.textile
-      uses: actions/github-script@0.8.0
+      uses: actions/github-script@v4
       with:
         script: |
-          const body = `<details><summary>Bundleサイズ一覧</summary>${env.bundleSizeList}</details>`
+          const bundleSizeList = require('./dist/bundle-size-list.textile')
           github.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body
+            body: `<details><summary>Bundleサイズ一覧</summary>${bundleSizeList}</details>`
           })
 
   build-base:
