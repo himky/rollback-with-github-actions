@@ -2,6 +2,8 @@ name: Update bundle size list
 
 on:
   workflow_dispatch:
+  push:
+    branches: [master]
   pull_request:
     branches: [master]
     types: [closed]
@@ -9,7 +11,6 @@ on:
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -22,12 +23,6 @@ jobs:
     - name: Build assets
       run: npm run build
 
-    - name: Upload stats
-      uses: actions/upload-artifact@v1
-      with:
-        name: base-stats
-        path: ./dist/stats.json
-
     - name: Checkout wiki
       uses: actions/checkout@v2
       with:
@@ -39,6 +34,7 @@ jobs:
       run: mv ./dist/bundle-size-list.textile .wiki/bundle-size-list.textile
 
     - name: Push to wiki
+      working-directory: .wiki
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@example.com"
