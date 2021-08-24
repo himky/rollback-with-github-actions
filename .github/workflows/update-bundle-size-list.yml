@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
-    - name: Checkout wiki
+    - name: Checkout
       uses: actions/checkout@v2
       with:
-        repository: ${{github.repository}}.wiki
+        repository: ${{github.repository}}
 
     - name: Install dependencies
       run: npm ci
@@ -22,15 +22,20 @@ jobs:
     - name: Build assets
       run: npm run build
 
+    - name: Upload stats
+      uses: actions/upload-artifact@v1
+      with:
+        name: base-stats
+        path: ./dist/stats.json
+
+    - name: Checkout wiki
+      uses: actions/checkout@v2
+      with:
+        repository: ${{github.repository}}.wiki
+
     - name: Push to wiki
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@example.com"
         git add .
         git diff-index --quiet HEAD || git commit -m "Update analyzed bundle" && git push
-
-    - name: Upload stats
-      uses: actions/upload-artifact@v1
-      with:
-        name: base-stats
-        path: ./dist/stats.json
