@@ -34,7 +34,7 @@ jobs:
         path: .wiki
 
     - name: Move bundle-size-list.textile
-      run: mv ./dist/bundle-size-list.textile .wiki/Home.textile
+      run: mv ./dist/bundle-size-list.textile .wiki/Bundleサイズ一覧.textile
 
     - name: Push to wiki
       working-directory: .wiki
