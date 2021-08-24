@@ -1,9 +1,10 @@
-name: Analyze-bundle
+name: Update package size list
 
 on:
   workflow_dispatch:
   pull_request:
     branches: [master]
+    types: [closed]
 
 jobs:
   analyze:
@@ -14,9 +15,10 @@ jobs:
         with:
           repository: ${{github.repository}}.wiki
 
-      - name: Analyze bundle
+      - name: Package size list
         run: |
-          echo 'analyzed-bundle-0824-2' > test-wiki.md
+          # webpack-bundle-size-analyzer
+          echo 'analyzed-bundle-0824-3' > test-wiki.md
 
       - name: Push to wiki
         run: |
