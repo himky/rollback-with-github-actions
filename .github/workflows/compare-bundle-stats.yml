@@ -84,5 +84,5 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         base_stats_path: ./base-stats/stats.json
         head_stats_path: ./head-stats/stats.json
-        announcement_percentage_threshold_increase: 0.01
-        announcement_percentage_threshold_decrease: -0.01
+        announcement_percentage_threshold_increase: 1
+        announcement_percentage_threshold_decrease: -1
