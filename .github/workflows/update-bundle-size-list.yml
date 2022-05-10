@@ -30,8 +30,8 @@ jobs:
         ref: master
         path: .wiki
 
-    - name: Move bundle-size-list.textile
-      run: mv ./dist/bundle-size-list.textile .wiki/Bundleサイズ一覧.textile
+    - name: Move package-size-list.textile
+      run: mv ./dist/package-size-list.textile .wiki/Bundleサイズ一覧.textile
 
     - name: Push to wiki
       working-directory: .wiki
