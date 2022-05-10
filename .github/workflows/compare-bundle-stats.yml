@@ -4,11 +4,6 @@ on:
   pull_request:
     types: [opened]
   workflow_dispatch:
-    inputs:
-      head_branch:
-        description: '比較するブランチ名'
-        required: true
-        type: string
 
 jobs:
   build-head:
