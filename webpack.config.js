@@ -14,7 +14,7 @@ module.exports = {
   },
   plugins: [
     ...htmlWebpackPlugins,
-    new WebpackBundleSizeAnalyzerPlugin('./bundle-size-list.textile')
+    new WebpackBundleSizeAnalyzerPlugin('./package-size-list.textile')
   ]
 }
 
