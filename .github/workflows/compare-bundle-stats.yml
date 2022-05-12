@@ -3,7 +3,6 @@ name: Compare bundle stats
 on:
   pull_request:
     types: [opened]
-  workflow_dispatch:
 
 jobs:
   build-head:
@@ -23,22 +22,22 @@ jobs:
       with:
         name: head-stats
         path: ./dist/stats.json
-    # - name: Create comment
-    #   uses: actions/github-script@v4
-    #   with:
-    #     script: |
-    #       const fs = require('fs')
-    #       const text = fs.readFileSync('./dist/package-size-list.textile', 'utf8')
-    #       const replaced = text
-    #         .replace(/  /g, '- ')
-    #         .replace(/\n/g, '<br>\n')
-    #         .replace(/<self>/g, '(self)')
-    #       github.issues.createComment({
-    #         issue_number: context.issue.number,
-    #         owner: context.repo.owner,
-    #         repo: context.repo.repo,
-    #         body: `<details><summary>Packageサイズ一覧</summary>${replaced}</details>`
-    #       })
+    - name: Create comment
+      uses: actions/github-script@v4
+      with:
+        script: |
+          const fs = require('fs')
+          const text = fs.readFileSync('./dist/package-size-list.textile', 'utf8')
+          const replaced = text
+            .replace(/  /g, '- ')
+            .replace(/\n/g, '<br>\n')
+            .replace(/<self>/g, '(self)')
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `<details><summary>Packageサイズ一覧</summary>${replaced}</details>`
+          })
 
   build-base:
     name: 'Build base'
