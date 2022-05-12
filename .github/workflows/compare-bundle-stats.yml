@@ -75,7 +75,7 @@ jobs:
     - name: Diff between base & head
       uses: chronotruck/webpack-stats-diff-action@1.0.0
       with:
+        announcement_percentage_threshold_increase: 1
         token: ${{ secrets.GITHUB_TOKEN }}
         base_stats_path: ./base-stats/stats.json
         head_stats_path: ./head-stats/stats.json
-        announcement_percentage_threshold_increase: 1
