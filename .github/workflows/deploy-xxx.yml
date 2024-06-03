@@ -36,8 +36,7 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          echo "???: s3://$S3_BUCKET_NAME/"
-          aws s3 cp ./dist/ s3://$S3_BUCKET_NAME/
+          aws s3 cp ./dist/ s3://test-backup-restore-himukai/
 
       - name: Create CloudFront invalidation
         run: |
