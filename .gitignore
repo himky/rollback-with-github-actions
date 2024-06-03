@@ -1,9 +1,2 @@
 dist
 node_modules
-backstop_data/*
-!backstop_data/engine_scripts
-backstop_data/engine_scripts/*
-!backstop_data/engine_scripts/puppet
-backstop_data/engine_scripts/puppet/*
-!backstop_data/engine_scripts/puppet/onReady.js
-backstop.json
