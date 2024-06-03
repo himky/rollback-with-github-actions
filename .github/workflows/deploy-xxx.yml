@@ -36,8 +36,8 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 cp ./dist/ s3://test-backup-restore-himukai/ --recursive
+          aws s3 cp ./dist/ s3://$S3_BUCKET_NAME/ --recursive
 
       - name: Create CloudFront invalidation
         run: |
-          aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID1 --paths "/*"
+          aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID --paths "/*"
