@@ -36,6 +36,8 @@ jobs:
 
       - name: Deploy to S3
         run: |
+          echo "secrets.S3_BUCKET_NAME: $(secrets.S3_BUCKET_NAME))"
+          echo "$S3_BUCKET_NAME: $S3_BUCKET_NAME)"
           aws s3 cp dist/ s3://$S3_BUCKET_NAME
 
       - name: Create CloudFront invalidation
