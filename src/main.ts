@@ -11,6 +11,8 @@ import json from 'highlight.js/lib/languages/json';
 import hljsVuePlugin from "@highlightjs/vue-plugin";
 import "highlight.js/styles/github.css";
 
+console.debug('rev: ', __COMMIT_HASH__)
+
 hljs.registerLanguage('json', json);
 
 const app = createApp(App);
